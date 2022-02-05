@@ -10,11 +10,11 @@ const port = process.env.PORT || 5000;
 //firebase admin initialization
 
 var serviceAccount = require('./ema-john-fir-firebase-adminsdk-cfbsj-42974f393f.json');
+//var serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT)
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+    credential: admin.credential.cert(serviceAccount)
 });
-
 
 // middleware
 app.use(cors());
@@ -105,6 +105,9 @@ run().catch(console.dir);
 
 app.get('/', (req, res) => {
     res.send('Ema jon server is running');
+});
+app.get('/a', (req, res) => {
+    res.send('Ema 222jon server is running');
 });
 
 app.listen(port, () => {
